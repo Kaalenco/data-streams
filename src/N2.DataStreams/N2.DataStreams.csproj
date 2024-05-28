@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>12</LangVersion>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>12</LangVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <Title>N2-Data-Streams</Title>
+    <Company>Kaalenco</Company>
+    <Copyright>(c) 2024 - rights reserved</Copyright>
+    <Authors>gjkaal</Authors>
+    <Description>Library for data streams</Description>
+    <IncludeSymbols>False</IncludeSymbols>
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageLicenseExpression>AFL-3.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kaalenco/n2-data-streams</PackageProjectUrl>
+    <PackageId>N2.DataStreams</PackageId>
+
+    <PackageType>Dependency</PackageType>
+    <Product>N2.DataStreams for NET8.0</Product>
+    <ProductName>N2.DataStreams</ProductName>
+    <ProductVersion>1.0.0</ProductVersion>
+
+    <RootNamespace>N2.DataStreams</RootNamespace>    
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="readme.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="System.IO.Abstractions" Version="21.0.2" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+  </ItemGroup>
+
+</Project>
