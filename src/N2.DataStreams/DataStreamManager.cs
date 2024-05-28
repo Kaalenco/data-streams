@@ -1,6 +1,4 @@
 using System.IO.Abstractions;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 
 namespace N2.DataStreams
@@ -22,6 +20,7 @@ namespace N2.DataStreams
         {
             _fileSystem = fileSystem;
         }
+
         public string Configfile { get; set; } = string.Empty;
 
         public void Initialize()
@@ -43,7 +42,7 @@ namespace N2.DataStreams
                 throw new System.Exception("Error reading config file");
             }
 
-            FileName = !string.IsNullOrEmpty( configData.FileName) ? configData.FileName : FileName;
+            FileName = !string.IsNullOrEmpty(configData.FileName) ? configData.FileName : FileName;
             StreamConfig.Clear();
             StreamConfig.AddRange(configData.StreamConfig);
             Configfile = !string.IsNullOrEmpty(configData.Configfile) ? configData.Configfile : Configfile;
@@ -67,11 +66,11 @@ namespace N2.DataStreams
         /// <param name="fileSystem">File system abstraction</param>
         /// <returns></returns>
         public static IDataStreamManager CreateDatastreamManager(IFileSystem fileSystem, string configFile)
-        {            
+        {
             var result = new DataStreamManager(fileSystem);
             result.Configfile = configFile;
             result.Initialize();
-            return result;            
+            return result;
         }
 
         public IDataStream CreateClient(string streamName)

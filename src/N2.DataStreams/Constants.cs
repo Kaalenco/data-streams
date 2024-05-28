@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace N2.DataStreams
+﻿namespace N2.DataStreams
 {
     public static class Constants
     {

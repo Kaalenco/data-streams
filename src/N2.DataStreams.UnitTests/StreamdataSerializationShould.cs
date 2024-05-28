@@ -10,7 +10,7 @@ namespace DataStreams.UnitTests
         [TestMethod]
         public void SerializeStreamdataBinary()
         {
-            var v1 = new StreamData( StreamType.Time, 1, 0.1, 0.6f, 12, 0, 0, DateTime.MaxValue);
+            var v1 = new StreamData(StreamType.Time, 1, 0.1, 0.6f, 12, 0, 0, DateTime.MaxValue);
             var serializedData = v1.GetBytes();
             Assert.IsNotNull(serializedData);
             Console.WriteLine($"Data length : {serializedData.Length}");

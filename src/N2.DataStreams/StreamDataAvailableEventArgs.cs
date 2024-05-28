@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace N2.DataStreams
+﻿namespace N2.DataStreams
 {
-
     public class StreamDataAvailableEventArgs : EventArgs
     {
         public StreamType StreamType { get; private set; }
@@ -10,8 +7,8 @@ namespace N2.DataStreams
 
         public StreamDataAvailableEventArgs()
         {
-
         }
+
         public StreamDataAvailableEventArgs(StreamType streamType, float reliability)
         {
             StreamType = streamType;

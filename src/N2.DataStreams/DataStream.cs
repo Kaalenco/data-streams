@@ -1,11 +1,10 @@
-﻿using System;
+﻿using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Collections.Concurrent;
 
 namespace N2.DataStreams
 {
-
     public delegate void StreamDataEventHandler(object sender, StreamDataEventArgs e);
+
     public delegate void DataAvailableEventHandler(object sender, StreamDataAvailableEventArgs e);
 
     public class DataStream : IDataStream
@@ -13,8 +12,11 @@ namespace N2.DataStreams
         private bool disposedValue;
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
         private readonly Stopwatch _stopwatch = new Stopwatch();
+
         public event StreamDataEventHandler? StreamDataHandler;
+
         public event DataAvailableEventHandler? DataAvailableHandler;
+
         public int PollingInterval { get; private set; }
         private readonly ConcurrentStack<StreamData> _stream = new ConcurrentStack<StreamData>();
 
@@ -41,9 +43,10 @@ namespace N2.DataStreams
         public int QueueLength => _stream.Count;
 
         private static readonly Random random = new Random();
+
         public DataStream(StreamConfig streamConfig)
         {
-            // Reset configuration            
+            // Reset configuration
             StreamType config = StreamType.None;
             TimeStreamAvailable = false;
             PollingInterval = streamConfig.IntervalInMilliseconds > 0 ? streamConfig.IntervalInMilliseconds : Constants.DefaultPollingInterval;
@@ -53,7 +56,7 @@ namespace N2.DataStreams
             _timer.Interval = PollingInterval;
             _timer.Elapsed += TimerElapsed;
             _timer.AutoReset = true;
-            
+
             if (streamConfig.AutoStart)
             {
                 _timer.Start();
@@ -62,17 +65,18 @@ namespace N2.DataStreams
             // Check configuration with the possibilities within this class
             // A timer is available
             if ((streamConfig.StreamType & StreamType.Time) == StreamType.Time)
-            {                
+            {
                 TimeStreamAvailable = true;
 
                 _stopwatch.Reset();
                 _stopwatch.Start();
                 config |= StreamType.Time;
             }
-            Configured = (streamConfig.StreamType == config) && config!=StreamType.None;
+            Configured = (streamConfig.StreamType == config) && config != StreamType.None;
         }
 
-        private DateTime _lastTime= DateTime.MinValue;
+        private DateTime _lastTime = DateTime.MinValue;
+
         private void TimerElapsed(object o, EventArgs e)
         {
             var elapsed = _stopwatch.ElapsedMilliseconds;
@@ -81,7 +85,7 @@ namespace N2.DataStreams
             // only add an entry if data is available.
             // for this 'dataservice' example, a datapoint is available when at least a second has passed
             var timeNow = DateTime.UtcNow;
-            if ((timeNow- _lastTime).Duration().TotalMilliseconds>1000)
+            if ((timeNow - _lastTime).Duration().TotalMilliseconds > 1000)
             {
                 _lastTime = timeNow;
                 var value = 1.0345 * random.Next(0, 10000);

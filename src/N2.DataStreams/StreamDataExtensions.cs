@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Text.Json;
 
 namespace N2.DataStreams
@@ -9,7 +7,7 @@ namespace N2.DataStreams
     {
         public static byte[] GetBytes<T>(this T value)
         {
-            var bytes =  JsonSerializer.SerializeToUtf8Bytes(value);
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(value);
             return Compress(bytes);
         }
 
@@ -40,13 +38,14 @@ namespace N2.DataStreams
             return crc;
         }
 
-        public static  Crc Integer(this Crc crc, int value) {
-            for(var i = 0; i < 2; i++)
+        public static Crc Integer(this Crc crc, int value)
+        {
+            for (var i = 0; i < 2; i++)
             {
                 var low = value & 0xFFFF;
                 AddValue(crc, (ushort)low);
                 value = value >> 16;
-            }           
+            }
             return crc;
         }
 
@@ -74,11 +73,11 @@ namespace N2.DataStreams
             return crc.Long(value.Ticks);
         }
 
-        private static  void AddValue(Crc crc, ushort value)
+        private static void AddValue(Crc crc, ushort value)
         {
             var val = crc.Value;
             val = (val * 2) ^ value;
-            if ((val & 0x10000) !=0)
+            if ((val & 0x10000) != 0)
             {
                 val = val ^ 0x8001;
             }

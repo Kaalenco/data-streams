@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace N2.DataStreams
+﻿namespace N2.DataStreams
 {
     [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
     public enum StreamType

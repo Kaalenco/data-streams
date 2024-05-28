@@ -12,7 +12,7 @@ namespace DataStreams.UnitTests
         {
             Name = "TestStream",
             StreamType = StreamType.Time,
-            IntervalInMilliseconds = 100           
+            IntervalInMilliseconds = 100
         };
 
         private IDataStream _sut;

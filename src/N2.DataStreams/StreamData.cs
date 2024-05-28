@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace N2.DataStreams
 {
@@ -10,7 +9,7 @@ namespace N2.DataStreams
     /// </summary>
     public struct StreamData
     {
-        public StreamData(StreamType streamType, int unitCode, double value, float reliability = 0.0f, int alt = 0, float lat = 0.0f, float lng=0.0f, DateTime? time=null)
+        public StreamData(StreamType streamType, int unitCode, double value, float reliability = 0.0f, int alt = 0, float lat = 0.0f, float lng = 0.0f, DateTime? time = null)
         {
             StreamType = streamType;
             Reliability = reliability;

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace N2.DataStreams
+﻿namespace N2.DataStreams
 {
     public interface IDataStreamManager
     {
@@ -37,6 +35,7 @@ namespace N2.DataStreams
         /// Initialize the DataStreamManager using the current StreamConfig configuration.
         /// </summary>
         void Initialize();
+
         List<string> ListClients();
 
         /// <summary>

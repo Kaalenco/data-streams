@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO.Abstractions;
 using Moq;
-using System.Collections.Generic;
-using System.Linq;
 using N2.DataStreams;
+using System.Collections.Generic;
+using System.IO.Abstractions;
+using System.Linq;
 
 namespace DataStreams.UnitTests
 {
@@ -11,11 +11,12 @@ namespace DataStreams.UnitTests
     public class DataStreamManagerShould
     {
         private readonly Mock<IFileSystem> _fileSystemMock = new Mock<IFileSystem>();
+
         private const string ConfigFileData =
 @"{
     ""FileName"": ""example.json"",
     ""StreamConfig"": [
-        {   ""Name"": ""Stream"",   
+        {   ""Name"": ""Stream"",
             ""StreamType"": ""Time""
         }
     ]
