@@ -38,6 +38,10 @@ namespace N2.DataStreams
                 //UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Skip
             };
             var configData = JsonSerializer.Deserialize<DataStreamManager>(jsonData, options);
+            if (configData == null)
+            {
+                throw new System.Exception("Error reading config file");
+            }
 
             FileName = !string.IsNullOrEmpty( configData.FileName) ? configData.FileName : FileName;
             StreamConfig.Clear();
@@ -59,7 +63,8 @@ namespace N2.DataStreams
         /// <summary>
         /// Factory for data stream manager.
         /// </summary>
-        /// <param name="configFile"></param>
+        /// <param name="configFile">The name for the config file</param>
+        /// <param name="fileSystem">File system abstraction</param>
         /// <returns></returns>
         public static IDataStreamManager CreateDatastreamManager(IFileSystem fileSystem, string configFile)
         {            

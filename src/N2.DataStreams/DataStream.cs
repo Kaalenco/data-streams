@@ -13,8 +13,8 @@ namespace N2.DataStreams
         private bool disposedValue;
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
         private readonly Stopwatch _stopwatch = new Stopwatch();
-        public event StreamDataEventHandler StreamDataHandler;
-        public event DataAvailableEventHandler DataAvailableHandler;
+        public event StreamDataEventHandler? StreamDataHandler;
+        public event DataAvailableEventHandler? DataAvailableHandler;
         public int PollingInterval { get; private set; }
         private readonly ConcurrentStack<StreamData> _stream = new ConcurrentStack<StreamData>();
 

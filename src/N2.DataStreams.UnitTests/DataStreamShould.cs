@@ -142,6 +142,5 @@ namespace DataStreams.UnitTests
             _sut.ResetQueue();
             Assert.IsFalse(_sut.DataAvailable);
         }
-
     }
 }

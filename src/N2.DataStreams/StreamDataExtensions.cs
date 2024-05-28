@@ -13,7 +13,7 @@ namespace N2.DataStreams
             return Compress(bytes);
         }
 
-        public static T Deserialize<T>(this byte[] data)
+        public static T? Deserialize<T>(this byte[] data)
         {
             var bytes = Decompress(data);
             var readOnlySpan = new ReadOnlySpan<byte>(bytes);
