@@ -89,7 +89,7 @@ namespace N2.DataStreams
             {
                 _lastTime = timeNow;
                 var value = 1.0345 * random.Next(0, 10000);
-                var streamData = new StreamData(StreamType.Time, 0, value, reliability, time: DateTime.UtcNow);
+                var streamData = new StreamData(StreamType.Time, 0, value, reliability, time: timeNow);
                 PushData(streamData);
                 OnDataAvailable(StreamType.Time, reliability);
                 OnDataAvailable(streamData);
