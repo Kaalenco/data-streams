@@ -18,7 +18,7 @@
     <Authors>gjkaal</Authors>
     <Description>Library for data streams</Description>
     <IncludeSymbols>False</IncludeSymbols>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <PackageLicenseExpression>AFL-3.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/kaalenco/n2-data-streams</PackageProjectUrl>
     <PackageId>N2.DataStreams</PackageId>
